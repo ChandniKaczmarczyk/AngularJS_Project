@@ -8,17 +8,18 @@
     angular.module('MyApp')
         .controller('UserDataController',UserData);
 
-    UserData.$inject=['$http'];
+    UserData.$inject=['UserGetDataService'];
 
-    function UserData($http){
+    function UserData(UserGetDataService){
         var userCntrl = this;
         userCntrl.name="Chandni Patel";
-        userCntrl.users={};
-        $http.get('../Controllers/usersData.json')
-            .then(function (success) {
-                return userCntrl.users = success.data;
-            },function (error) {
-               console.log(error);
-            });
+
+
+        //Get all user data by calling UserGetDatService service and display in the table.
+        UserGetDataService.getUser().then(function (success) {
+            userCntrl.users=success;
+        },function (error) {
+           console.log(error) ;
+        });
     }
 })();
