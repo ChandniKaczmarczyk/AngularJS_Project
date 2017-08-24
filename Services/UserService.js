@@ -12,7 +12,7 @@
     function UserGetData($q,$http) {
 
         var self=this;
-        
+
         self.getUser= getUser;
         self.getUserById=getUserById;
 
