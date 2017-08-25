@@ -21,10 +21,17 @@
            console.log(error) ;
         });
 
-
+//method to delete user data
         userCntrl.deleteRow=function(i){
             userCntrl.users.splice(i,1);
+            $('#deleteModal').modal('hide');
         };
+//method to add new user
+        userCntrl.addUser=function () {
+            userCntrl.users.push(userCntrl.newuser);
+            userCntrl.newuser='';
+            $('#myModal').modal('hide');
+        }
     }
 
     /*angular.module('MyApp')
@@ -37,7 +44,4 @@
             };
 
         } ]);*/
-
-
-
 })();
