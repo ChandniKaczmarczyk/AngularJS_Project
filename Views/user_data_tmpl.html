@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Date Created</th>
+        <th>Company</th>
+        <th>Website</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="user in userVm.users | filter:filter_data">
+    <tr>
+        <td><img ng-src="{{user.profilePic}}" height="50px" width="50px" /></td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address.street}}, {{user.address.city}} , {{user.address.state}} {{user.address.country}}</td>
+        <td>{{user.dateCreated | date:'MM/dd/yyyy' }}</td>
+        <td>{{user.company.name}}</td>
+        <td>{{user.company.website}}</td>
+        <td><button type="button" class="btn btn-success" id="btn_edit" >Edit</button></td>
+        <td><button type="button" class="btn btn-danger" id="btn_delete" ng-click="deleteRow($index)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>

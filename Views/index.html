@@ -14,13 +14,44 @@
     <div class="row">
 <div ng-controller="UserDataController as userVm">
     <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
+        <div class="form-group" ng-controller="tableController as demoVm">
+            <button type="button" class="btn btn-danger" ng-click="deleteRow($index)">Delete</button>
             <input type="text" class="form-control" placeholder="Search" ng-model="filter_data">
         </div>
     </form>
     <h2>{{userVm.name}}</h2>
     <!-- Insert user_data_tmpl template which contains table to display all user information -->
-    <div ng-include="'user_data_tmpl.html'"></div>
+    <!--<div ng-include="'user_data_tmpl.html'"></div>-->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Date Created</th>
+            <th>Company</th>
+            <th>Website</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="user in userVm.users | filter:filter_data">
+        <tr>
+            <td><img ng-src="{{user.profilePic}}" height="50px" width="50px" /></td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.address.street}}, {{user.address.city}} , {{user.address.state}} {{user.address.country}}</td>
+            <td>{{user.dateCreated | date:'MM/dd/yyyy' }}</td>
+            <td>{{user.company.name}}</td>
+            <td>{{user.company.website}}</td>
+            <td><button type="button" class="btn btn-success" id="btn_edit" >Edit</button></td>
+            <td ng-controller="tableController as demoVm"><button type="button" class="btn btn-danger" ng-click="userVm.deleteRow($index)">Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
     </div>
 </div>
