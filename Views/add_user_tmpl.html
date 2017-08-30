@@ -8,32 +8,55 @@
                 <h4 class="modal-title" id="myModalLabel">Add New User</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form name="addUserForm" novalidate>
                     <div class="form-group">
                         <label for="txtId">ID</label>
-                        <input type="text" class="form-control" id="txtId" placeholder="Email" ng-model="userVm.newuser.id">
+                        <input type="text" class="form-control" id="txtId" name="txtFormId" placeholder="ID" ng-model="userVm.newuser.id" required>
+                        <div ng-messages="addUserForm.txtFormId.$error" class="form-group has-error" ng-if="addUserForm.txtFormId.$dirty">
+                            <p ng-message="required" class="error">ID is required</p></div>
                     </div>
                     <div class="form-group">
                         <label for="txtFirstname">First Name</label>
-                        <input type="text" class="form-control" id="txtFirstname" placeholder="First name" ng-model="userVm.newuser.firstName">
+                        <input type="text" class="form-control" id="txtFirstname" name="txtFormFirstname" placeholder="First name" ng-model="userVm.newuser.firstName" required>
+                        <div ng-messages="addUserForm.txtFormFirstname.$error" class="form-group has-error" ng-if="addUserForm.txtFormFirstname.$dirty">
+                            <p ng-message="required" class="error">First name is required</p></div>
+
                     </div>
                     <div class="form-group">
                         <label for="txtLastname">Last Name</label>
-                        <input type="text" class="form-control" id="txtLastname" placeholder="Last name" ng-model="userVm.newuser.lastName">
+                        <input type="text" class="form-control" id="txtLastname" name="txtFormLastname" placeholder="Last name" ng-model="userVm.newuser.lastName" required>
+                        <div ng-messages="addUserForm.txtFormLastname.$error" class="form-group has-error" ng-if="addUserForm.txtFormLastname.$dirty">
+                            <p ng-message="required" class="error">Last name is required</p></div>
                     </div>
                     <div class="form-group">
                         <label for="txtEmail">Email</label>
-                        <input type="email" class="form-control" id="txtEmail" placeholder="Email" ng-model="userVm.newuser.email">
+                        <input type="email" class="form-control" id="txtEmail" name="txtFormEmail" placeholder="Email" ng-model="userVm.newuser.email" required>
+                        <div ng-messages="addUserForm.txtFormEmail.$error" class="form-group has-error" ng-if="addUserForm.txtFormEmail.$dirty">
+                            <p ng-message="required" class="error">Email is required</p></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAddress">Address</label>
+                        <input type="text" class="form-control" id="txtAddress" name="txtFormAddress" placeholder="Company Address" ng-model="userVm.newuser.address.street">
+                        <div ng-messages="addUserForm.txtFormAddress.$error" class="form-group has-error" ng-if="addUserForm.txtFormAddress.$dirty"><p ng-message="required" class="error">Address is required</p></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCity">City</label>
+                        <input type="text" class="form-control" id="txtCity" placeholder="Company City" ng-model="userVm.newuser.address.city">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtState">State</label>
+                        <input type="text" class="form-control" id="txtState" placeholder="Company State" ng-model="userVm.newuser.address.state">
                     </div>
                     <div class="form-group">
                         <label for="txtCompanyname">Company Name</label>
-                        <input type="text" class="form-control" id="txtCompanyname" placeholder="Company Name" ng-model="userVm.newuser.company.name">
+                        <input type="text" class="form-control" id="txtCompanyname" name="txtFormCompanyname" placeholder="Company Name" ng-model="userVm.newuser.company.name" required>
+                        <div ng-messages="addUserForm.txtFormCompanyname.$error" class="form-group has-error" ng-if="addUserForm.txtFormCompanyname.$dirty"><p ng-message="required" class="error">Company name is required</p></div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="userVm.addUser()">Save</button>
+                <button type="button" class="btn btn-primary" ng-click="addUserForm.$valid && userVm.addUser()" >Save</button>
             </div>
         </div>
     </div>

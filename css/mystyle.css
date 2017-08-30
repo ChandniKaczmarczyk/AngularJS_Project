@@ -6,3 +6,17 @@ img
 {
     text-shadow: 2px 2px 2px #FF0000;
 }
+
+/*
+.ng-dirty.ng-valid{
+    border-color: green;
+}
+
+.ng-invalid.ng-dirty{
+    border-color: red;
+}*/
+
+.error{
+    color:red;
+    font-weight: 300;
+}

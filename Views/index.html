@@ -8,23 +8,21 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/mystyle.css">
 
+
 </head>
 <body>
 <div class="container">
     <div class="row">
 <div ng-controller="UserDataController as userVm">
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Add User
-            </button>
-            <input type="text" class="form-control" placeholder="Search" ng-model="filter_data">
-        </div>
-    </form>
-    <h2 class="title-style">{{userVm.name}}</h2>
-    <div ng-include="'add_user_tmpl.html'"></div>
+
+    <!--create directive for head section like name and search button -->
+    <header-section></header-section>
+
     <!-- Insert user_data_tmpl template which contains table to display all user information -->
     <div ng-include="'user_data_tmpl.html'"></div>
+
+    <!-- template for create new user modal popup-->
+    <div ng-include="'add_user_tmpl.html'"></div>
 
 
     <!-- Modal -->
@@ -64,8 +62,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../script/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.6.5/angular-messages.min.js"></script>
 <script src="../script/app.js"></script>
 <script src="../Controllers/FetchUserController.js"></script>
 <script src="../Services/UserService.js"></script>
+<script src="alldirectives.js"></script>
 </body>
 </html>
